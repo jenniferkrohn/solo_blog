@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Blog Posts</h1>
+
+
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Blog entry</th>
+      <th colspan="3"></th>
+    </tr>
+
+<div class = "row">
+  
+    <% @blog_posts.each do |blog_post| %>
+ <div class = "col-md-6">
+  <div class="panel panel-primary"> 
+    <div class="panel-heading"><%= link_to blog_post.title, blog_post%></div>
+      <div class="panel-body">
+        <p> <%= link_to blog_post.title, blog_post %></p>
+        <p>by <strong><%= blog_post.author %></strong></p>
+        <p><%= blog_post.blog_entry[0..100]%>...[</p>
+      </div> <!-- end of panel - body-->
+        <div class="panel-footer">
+        <%#= link_to 'Show', blog_post %>
+        <%= link_to 'Edit', edit_blog_post_path(blog_post) %>
+        <%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div> <!-- end of footer -->
+   
+    </div>   <!-- end of panel panel --> 
+  </div>
+    
+  </div> <!-- end of col -->
+</div> <!-- end of row -->
+<% end %>
+
+
+<br>
+
+<%= link_to 'New Blog post', new_blog_post_path %>
